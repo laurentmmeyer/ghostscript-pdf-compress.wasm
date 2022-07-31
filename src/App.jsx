@@ -66,19 +66,19 @@ function App() {
                 The best tool I know to compress PDF is <a target={"_blank"}
                                                            href={"https://ghostscript.com/"}>Ghostscript</a> but this
                 was
-                not running into the browser. Until <a target={"_blank"}
+                not running in the browser. Until <a target={"_blank"}
                                                        href={"https://github.com/ochachacha/ps-wasm"}>Ochachacha</a> ported
                 the lib in <a target={"_blank"}
                               href={"https://webassembly.org/"}>Webassembly</a>.</p>
             <p>
                 Based on his amazing work, I built this <a
-                href={"https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"} target={"_blank"}>demo</a> together.
+                href={"https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"} target={"_blank"}>demo</a>.
                 It's running on Vite and React. It imports the WASM on the fly when you want compress a PDF.
             </p>
             <p>
                 Be aware that the Webassembly binary is weighting <b>18MB</b>.
             </p>
-            <p><i>Secure and private by design: the data never leave your computer.</i></p>
+            <p><i>Secure and private by design: the data never leaves your computer.</i></p>
             {state !== "loading" &&
                 <form onSubmit={onSubmit}>
                     <input type="file" accept={"application/pdf"} name="file"
