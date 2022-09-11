@@ -4,41 +4,37 @@ import {_GSPS2PDF} from "./lib/background.js";
 
 
 function loadPDFData(response, filename) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", response.pdfDataURL);
-    xhr.responseType = "arraybuffer";
-    xhr.onload = function () {
-        window.URL.revokeObjectURL(response.pdfDataURL);
-        const blob = new Blob([xhr.response], {type: "application/pdf"});
-        const pdfURL = window.URL.createObjectURL(blob);
-        document.title = filename;
-        const link = document.createElement("a");
-        link.href = pdfURL;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        setTimeout(function () {
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(pdfURL);
-            // TODO: Hacky but this is not working twice, need to inspect the problem closer
-            location.reload();
-        }, 0);
-    };
-    xhr.send();
+    return new Promise((resolve, reject) => {
+        debugger;
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", response.pdfDataURL);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function () {
+            window.URL.revokeObjectURL(response.pdfDataURL);
+            const blob = new Blob([xhr.response], {type: "application/pdf"});
+            const pdfURL = window.URL.createObjectURL(blob);
+            resolve({pdfURL})
+        };
+        xhr.send();
+    })
+
 }
 
 
 function App() {
     const [state, setState] = useState("init")
     const [file, setFile] = useState(undefined)
+    const [downloadLink, setDownloadLink] = useState(undefined)
 
     function compressPDF(pdf, filename) {
         const dataObject = {psDataURL: pdf}
         _GSPS2PDF(dataObject,
             (element) => {
                 console.log(element);
-                setState("success")
-                loadPDFData(element, filename);
+                setState("toBeDownloaded")
+                loadPDFData(element, filename).then(({pdfURL}) => {
+                    setDownloadLink(pdfURL)
+                });
             },
             (...args) => console.log("Progress:", JSON.stringify(args)),
             (element) => console.log("Status Update:", JSON.stringify(element)))
@@ -59,6 +55,7 @@ function App() {
         return false;
     }
 
+    let minFileName = file && file.filename && file.filename.replace('.pdf', '-min.pdf');
     return (
         <>
             <h1>Free Browser side PDF-Compressor</h1>
@@ -67,7 +64,7 @@ function App() {
                                                            href={"https://ghostscript.com/"}>Ghostscript</a> but this
                 was
                 not running in the browser. Until <a target={"_blank"}
-                                                       href={"https://github.com/ochachacha/ps-wasm"}>Ochachacha</a> ported
+                                                     href={"https://github.com/ochachacha/ps-wasm"}>Ochachacha</a> ported
                 the lib in <a target={"_blank"}
                               href={"https://webassembly.org/"}>Webassembly</a>.</p>
             <p>
@@ -79,7 +76,7 @@ function App() {
                 Be aware that the Webassembly binary is weighting <b>18MB</b>.
             </p>
             <p><i>Secure and private by design: the data never leaves your computer.</i></p>
-            {state !== "loading" &&
+            {state !== "loading" && state !== "toBeDownloaded" &&
                 <form onSubmit={onSubmit}>
                     <input type="file" accept={"application/pdf"} name="file"
                            onChange={changeHandler} id={"file"}/>
@@ -88,11 +85,28 @@ function App() {
                         <input className={"button"} type="submit" value={"🚀 Compress this PDF in the browser! 🚀"}/>}
                 </form>}
             {state === "loading" && "Loading...."}
-
+            {state === "toBeDownloaded" &&
+                <>
+                    <div className={"green"}>
+                        <a href={downloadLink} download={minFileName} >
+                            {`📄 Download ${minFileName} 📄`}
+                        </a>
+                    </div>
+                    <div className={"blue"}>
+                        <a href={'/'} >
+                            {`🔁 Compress another PDF 🔁`}
+                        </a>
+                    </div>
+                </>
+            }
             <p>
                 Everything is open-source and you can contribute <a
                 href={"https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"} target={"_blank"}>here</a>.
             </p>
+            <br/>
+            <p><i>This website uses no tracking, no cookies, no adtech.</i></p>
+            <a target={"_blank"} href={"https://meyer-laurent.com"}>About me</a>
+
         </>
     )
 }

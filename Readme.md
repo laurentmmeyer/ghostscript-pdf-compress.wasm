@@ -21,3 +21,5 @@ yarn dev
 ```
 
 ## Demo
+
+[https://laurentmmeyer.github.io/ghostscript-pdf-compress.wasm/](https://laurentmmeyer.github.io/ghostscript-pdf-compress.wasm/)

@@ -39,7 +39,7 @@ label {
   display:none;
 }
 
-[type=submit] {
+[type=submit], .green, .blue {
   margin-top: 30px;
   background-color: #65b453;
   border:none;
@@ -54,6 +54,18 @@ label {
   -ms-transition:0.2s ease all;
   -o-transition:0.2s ease all;
   transition:0.2s ease all;
+}
+
+.green > a, .blue > a{
+  color: white;
+}
+
+.green > a:hover, .blue>a:hover{
+  color: #ececec;
+}
+
+.blue {
+  background-color: #646cff;
 }
 
 label:hover {
