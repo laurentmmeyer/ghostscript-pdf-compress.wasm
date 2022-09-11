@@ -1,73 +1,89 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 1200px) {
+    #root {
+        max-width: 1280px;
+    }
 }
 
 form {
-  margin:0 auto;
-  padding:20px;
-  width:400px;
-  height:auto;
-  overflow:hidden;
-  background:#FFFFFF;
-  border-radius:3px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-radius: 3px;
 }
 
 label {
-  margin:0;
-  padding:10px;
-  width:auto;
-  max-width:300px;
-  height:auto;
-  background-color:#929292;
-  border:none;
-  color:#fff;
-  cursor:pointer;
-  text-align:center;
-  border-radius:5px;
-  -webkit-border-radius:5px;
-  -webkit-transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -ms-transition:0.2s ease all;
-  -o-transition:0.2s ease all;
-  transition:0.2s ease all;
+    margin: 0;
+    width: auto;
+    max-width: 300px;
+    height: auto;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
 }
 
-[type=file]{
-  display:none;
+.padded-button {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.label {
+    background-color: #929292;
+}
+
+.success-button {
+    background-color: #65b453;
+}
+
+.padding-top{
+    margin-top: 30px;
+}
+
+[type=file] {
+    display: none;
 }
 
 [type=submit], .green, .blue {
-  margin-top: 30px;
-  background-color: #65b453;
-  border:none;
-  color:#fff;
-  cursor: pointer;
-  padding:10px;
-  font-size: large;
-  border-radius:5px;
-  -webkit-border-radius:5px;
-  -webkit-transition:0.2s ease all;
-  -moz-transition:0.2s ease all;
-  -ms-transition:0.2s ease all;
-  -o-transition:0.2s ease all;
-  transition:0.2s ease all;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: large;
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+    white-space: normal;
+    background: transparent;
 }
 
-.green > a, .blue > a{
-  color: white;
+div > a {
+    color: white;
 }
 
-.green > a:hover, .blue>a:hover{
-  color: #ececec;
+div > a {
+    color: #ececec;
 }
 
 .blue {
-  background-color: #646cff;
-}
-
-label:hover {
-  background:#ADADAD;
+    background-color: #646cff;
 }

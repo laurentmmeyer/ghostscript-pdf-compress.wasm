@@ -5,7 +5,6 @@ import {_GSPS2PDF} from "./lib/background.js";
 
 function loadPDFData(response, filename) {
     return new Promise((resolve, reject) => {
-        debugger;
         const xhr = new XMLHttpRequest();
         xhr.open("GET", response.pdfDataURL);
         xhr.responseType = "arraybuffer";
@@ -80,20 +79,28 @@ function App() {
                 <form onSubmit={onSubmit}>
                     <input type="file" accept={"application/pdf"} name="file"
                            onChange={changeHandler} id={"file"}/>
-                    <label htmlFor={"file"}>{!file || !file.filename ? `Choose PDF to compress` : file.filename}</label>
+                    <div className={"label padded-button"}>
+                        <label
+                            htmlFor={"file"}>{!file || !file.filename ? `Choose PDF to compress` : file.filename}</label>
+                    </div>
                     {state === 'selected' &&
-                        <input className={"button"} type="submit" value={"🚀 Compress this PDF in the browser! 🚀"}/>}
+                        <div className={"success-button padded-button padding-top"}>
+                            <input className={"button"} type="submit"
+                                   value={"🚀 Compress this PDF in the browser! 🚀"}/>
+                        </div>
+                    }
+
                 </form>}
             {state === "loading" && "Loading...."}
             {state === "toBeDownloaded" &&
                 <>
-                    <div className={"green"}>
-                        <a href={downloadLink} download={minFileName} >
+                    <div className={"success-button padded-button"}>
+                        <a href={downloadLink} download={minFileName}>
                             {`📄 Download ${minFileName} 📄`}
                         </a>
                     </div>
-                    <div className={"blue"}>
-                        <a href={'/'} >
+                    <div className={"blue padded-button padding-top"}>
+                        <a href={'./'}>
                             {`🔁 Compress another PDF 🔁`}
                         </a>
                     </div>
@@ -105,8 +112,9 @@ function App() {
             </p>
             <br/>
             <p><i>This website uses no tracking, no cookies, no adtech.</i></p>
-            <a target={"_blank"} href={"https://meyer-laurent.com"}>About me</a>
-
+            <p>
+                <a target={"_blank"} href={"https://meyer-laurent.com"}>About me</a>
+            </p>
         </>
     )
 }
