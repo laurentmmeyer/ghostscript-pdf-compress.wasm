@@ -80,7 +80,7 @@ div > a {
     color: white;
 }
 
-div > a {
+div > a:hover {
     color: #ececec;
 }
 
