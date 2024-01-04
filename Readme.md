@@ -23,3 +23,7 @@ yarn dev
 ## Demo
 
 [https://laurentmmeyer.github.io/ghostscript-pdf-compress.wasm/](https://laurentmmeyer.github.io/ghostscript-pdf-compress.wasm/)
+
+## Blog
+
+I wrote a [post](https://meyer-laurent.com/playing-around-webassembly-and-ghostscript) about the process.
