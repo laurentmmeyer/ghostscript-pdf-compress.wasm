@@ -6,9 +6,9 @@ export default {
       'blue': '#2d0896ff',
       'purple': {
         100: '#f0ecfd',
-        900: '#694fc6ff',
+        900: '#694fc6',
       },
-      'gray': '#efefeff',
+      'gray': '#efefef',
       'black': '#2e1c2e'
     },
     fontFamily: {
