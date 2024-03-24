@@ -1,89 +1,91 @@
 #root {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    box-sizing: border-box;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 1200px) {
-    #root {
-        max-width: 1280px;
-    }
+  #root {
+    max-width: 1280px;
+  }
 }
 
 form {
-    margin: 0 auto;
-    padding: 20px;
-    width: 400px;
-    max-width: 100%;
-    box-sizing: border-box;
-    height: auto;
-    overflow: hidden;
-    background: #FFFFFF;
-    border-radius: 3px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 3px;
 }
 
 label {
-    margin: 0;
-    width: auto;
-    max-width: 300px;
-    height: auto;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    text-align: center;
-    -webkit-transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -ms-transition: 0.2s ease all;
-    -o-transition: 0.2s ease all;
-    transition: 0.2s ease all;
+  margin: 0;
+  width: auto;
+  max-width: 300px;
+  height: auto;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
 }
 
 .padded-button {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    padding: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .label {
-    background-color: #929292;
+  background-color: #929292;
 }
 
 .success-button {
-    background-color: #65b453;
+  background-color: #65b453;
 }
 
-.padding-top{
-    margin-top: 30px;
+.padding-top {
+  margin-top: 30px;
 }
 
-[type=file] {
-    display: none;
+[type="file"] {
+  display: none;
 }
 
-[type=submit], .green, .blue {
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: large;
-    -webkit-transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -ms-transition: 0.2s ease all;
-    -o-transition: 0.2s ease all;
-    transition: 0.2s ease all;
-    white-space: normal;
-    background: transparent;
+[type="submit"],
+.green,
+.blue {
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: large;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  white-space: normal;
+  background: transparent;
 }
 
 div > a {
-    color: white;
+  color: white;
 }
 
 div > a:hover {
-    color: #ececec;
+  color: #ececec;
 }
 
 .blue {
-    background-color: #646cff;
+  background-color: #646cff;
 }

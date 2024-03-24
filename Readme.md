@@ -1,6 +1,7 @@
 # Ghostscript-pdf-compress.wasm
 
 ## Context
+
 This project is a demo of another usage of the `gs.wasm` that [@ochachacha](https://github.com/ochachacha) compiled. It takes any PDF and compress it via ghostscript.
 
 The applied command is:
