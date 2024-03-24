@@ -22,7 +22,7 @@ export function _GSPS2PDF(
       preRun: [
         function () {
           const FS = window.FS;
-          var data = FS.writeFile("input.pdf", new Uint8Array(xhr.response));
+          FS.writeFile("input.pdf", new Uint8Array(xhr.response));
         },
       ],
       postRun: [
@@ -71,10 +71,18 @@ export function _GSPS2PDF(
         statusUpdateCallback(text);
       },
       totalDependencies: 0,
+      noExitRuntime: 1
     };
     Module.setStatus("Loading Ghostscript...");
-    window.Module = Module;
-    loadScript();
+    if (!window.Module) {
+      window.Module = Module;
+      loadScript();
+    } else {
+      window.Module["calledRun"] = false;
+      window.Module["postRun"] = Module.postRun;
+      window.Module["preRun"] = Module.preRun;
+      window.Module.run();
+    }
   };
   xhr.send();
 }

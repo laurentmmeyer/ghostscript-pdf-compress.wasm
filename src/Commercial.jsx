@@ -1,6 +1,6 @@
 import React from 'react';
 // Assuming MyDropzone is a component you have created or imported
-import MyDropzone from './FileDropBox.jsx';
+import DropZone from './FileDropBox.jsx';
 import './Commercial.css'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
           <br/><b>We do not send your files anywhere</b>, so we cannot leak data we never had.<br/><b>Safe, fast, and private</b> - all without leaving your browser.
         </p>
         <div className="w-full max-w-md">
-          <MyDropzone />
+          <DropZone />
         </div>
       </main>
 
