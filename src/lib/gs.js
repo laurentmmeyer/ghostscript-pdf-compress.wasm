@@ -6171,8 +6171,7 @@ function ___syscall221(which, varargs) {
         stream.flags |= arg;
         return 0;
       }
-      case 12: /* case 12: Currently in musl F_GETLK64 has same value as F_GETLK, so omitted to avoid duplicate case blocks. If that changes, uncomment this */
-      {
+      case 12 /* case 12: Currently in musl F_GETLK64 has same value as F_GETLK, so omitted to avoid duplicate case blocks. If that changes, uncomment this */: {
         var arg = SYSCALLS.get();
         var offset = 0;
         // We're always unlocked.
