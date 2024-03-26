@@ -25,7 +25,7 @@ function App() {
         <h1 className="text-center text-blue font-bold text-4xl mb-4 font-raleway">
           Secure PDF Compressor
         </h1>
-        <p className="max-w-xl text-center text-lg mb-6 font-sans">
+        <p className="max-w-xl text-center text-lg mb-6 font-sans ">
           This PDF compressor works right in your browser using the latest web technologies, meaning it does not rely on external servers.
           <br/><b>We do not send your files anywhere</b>, so we cannot leak data we never had.<br/><b>Safe, fast, and private</b> - all without leaving your browser.
         </p>
@@ -34,8 +34,8 @@ function App() {
         </div>
       </main>
 
-      <footer className="mx-auto">
-        <div className="py-4 text-center flex items-center space-x-4">
+      <footer className="bg-white w-full flex items-center justify-center	">
+        <div className=" py-4 text-center  flex space-x-4">
           <a href="#" className="hover:underline text-black font-dm" rel="noopener noreferrer">Legal Mentions</a>
           <a href="https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm" target={"_blank"} className="hover:underline text-black font-dm" rel="noopener noreferrer">Source Code</a>
         </div>

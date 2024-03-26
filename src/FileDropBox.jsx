@@ -14,6 +14,7 @@ const baseStyle = {
   borderStyle: 'dashed',
   backgroundColor: '#ffffff',
   color: '#bdbdbd',
+  cursor: 'pointer',
   outline: 'none',
   transition: 'border .24s ease-in-out'
 };

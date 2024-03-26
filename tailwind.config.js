@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -9,7 +10,8 @@ export default {
         900: '#694fc6',
       },
       'gray': '#efefef',
-      'black': '#2e1c2e'
+      'black': '#2e1c2e',
+      'white': '#ffffff'
     },
     fontFamily: {
       dm: ["DmSans", "sans-serif"],
