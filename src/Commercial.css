@@ -10,3 +10,27 @@
     font-family: "DmSans";
     src: url("./assets/dmsans.ttf");
 }
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    from {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
