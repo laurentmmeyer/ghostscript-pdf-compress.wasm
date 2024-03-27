@@ -1643,7 +1643,6 @@ var wasmBinaryFile = "https://cdn-wasm.b-cdn.net/gs.wasm";
 // if (!isDataURI(wasmBinaryFile)) {
 //   wasmBinaryFile = locateFile(wasmBinaryFile);
 // }
-debugger;
 function getBinary() {
   try {
     if (Module["wasmBinary"]) {
