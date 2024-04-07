@@ -33,8 +33,8 @@ function Commercial({ children }) {
                   className="text-lg text-purple-100 hover:text-white font-medium font-dm flex-row flex justify-center items-center"
                 >
                   <img
-                    src="/src/assets/pdf.png"
-                    alt="Your Company Logo"
+                    src="/pdf.png"
+                    alt="SaferPDF"
                     className="h-5 w-5 mr-2"
                   />{" "}
                   {/* Adjust path as necessary */}
