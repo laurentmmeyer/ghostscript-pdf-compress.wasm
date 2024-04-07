@@ -71,7 +71,7 @@ export function _GSPS2PDF(
         statusUpdateCallback(text);
       },
       totalDependencies: 0,
-      noExitRuntime: 1
+      noExitRuntime: 1,
     };
     Module.setStatus("Loading Ghostscript...");
     if (!window.Module) {
