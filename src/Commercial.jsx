@@ -36,8 +36,7 @@ function Commercial({ children }) {
                     src="/pdf.png"
                     alt="SaferPDF"
                     className="h-5 w-5 mr-2"
-                  />{" "}
-                  {/* Adjust path as necessary */}
+                  />
                   SaferPDF
                 </a>
               </div>
