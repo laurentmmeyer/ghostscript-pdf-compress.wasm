@@ -23,50 +23,50 @@ function Commercial({ children }) {
     <>
       <div className="h-screen w-full flex flex-col text-black">
         {/* Top Navigation Bar */}
-        <nav className="bg-purple-900 shadow">
-          <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
-              {/* Company Title */}
-              <div className="flex-shrink-0 flex items-center">
-                <a
-                  href="/"
-                  className="text-lg text-purple-100 hover:text-white font-medium font-dm flex-row flex justify-center items-center"
-                >
-                  <img
-                    src="/pdf.png"
-                    alt="SaferPDF"
-                    className="h-5 w-5 mr-2"
-                  />
-                  SaferPDF
-                </a>
-              </div>
-              {/* Navigation Items */}
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center space-x-5">
-                  {/* Navigation Item: Pricing */}
-                  <a
-                    href="/"
-                    className="text-lg text-purple-100 hover:text-white font-medium font-dm"
-                  >
-                    Compress
-                  </a>
-                  <a
-                    href="/pricing"
-                    className="text-lg text-purple-100 hover:text-white font-medium font-dm"
-                  >
-                    Pricing
-                  </a>
-                  <a
-                    href="/blog"
-                    className="text-lg text-purple-100 hover:text-white font-medium font-dm"
-                  >
-                    Blog
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+        {/*<nav className="bg-purple-900 shadow">*/}
+        {/*  <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">*/}
+        {/*    <div className="flex justify-between h-16">*/}
+        {/*      /!* Company Title *!/*/}
+        {/*      <div className="flex-shrink-0 flex items-center">*/}
+        {/*        <a*/}
+        {/*          href="/"*/}
+        {/*          className="text-lg text-purple-100 hover:text-white font-medium font-dm flex-row flex justify-center items-center"*/}
+        {/*        >*/}
+        {/*          <img*/}
+        {/*            src="/pdf.png"*/}
+        {/*            alt="SaferPDF"*/}
+        {/*            className="h-5 w-5 mr-2"*/}
+        {/*          />*/}
+        {/*          SaferPDF*/}
+        {/*        </a>*/}
+        {/*      </div>*/}
+        {/*      /!* Navigation Items *!/*/}
+        {/*      <div className="flex">*/}
+        {/*        <div className="flex-shrink-0 flex items-center space-x-5">*/}
+        {/*          /!* Navigation Item: Pricing *!/*/}
+        {/*          <a*/}
+        {/*            href="/"*/}
+        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*          >*/}
+        {/*            Compress*/}
+        {/*          </a>*/}
+        {/*          <a*/}
+        {/*            href="/pricing"*/}
+        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*          >*/}
+        {/*            Pricing*/}
+        {/*          </a>*/}
+        {/*          <a*/}
+        {/*            href="/blog"*/}
+        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*          >*/}
+        {/*            Blog*/}
+        {/*          </a>*/}
+        {/*        </div>*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</nav>*/}
 
         {/* Main Content */}
         <main className="bg-purple-100 w-full flex-grow flex flex-col items-center justify-center p-4">
@@ -97,42 +97,42 @@ function Commercial({ children }) {
           {!loading && <div className={"w-full"}>{children}</div>}
         </main>
 
-        <footer className="bg-white w-full flex items-center justify-center	">
-          <div className=" py-4 text-center flex space-x-4">
-            <a
-              href="/legal/general_terms_of_use.html"
-              target={"_blank"}
-              className="hover:underline text-black font-dm"
-              rel="noopener noreferrer"
-            >
-              Terms of use
-            </a>
-            <a
-              href="/legal/saas_terms_of_use.html"
-              target={"_blank"}
-              className="hover:underline text-black font-dm"
-              rel="noopener noreferrer"
-            >
-              SAAS Terms of use
-            </a>
-            <a
-              href="/legal/privacy_policy.html"
-              target={"_blank"}
-              className="hover:underline text-black font-dm"
-              rel="noopener noreferrer"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"
-              target={"_blank"}
-              className="hover:underline text-black font-dm"
-              rel="noopener noreferrer"
-            >
-              Source Code
-            </a>
-          </div>
-        </footer>
+        {/*<footer className="bg-white w-full flex items-center justify-center	">*/}
+        {/*  <div className=" py-4 text-center flex space-x-4">*/}
+        {/*    <a*/}
+        {/*      href="/legal/general_terms_of_use.html"*/}
+        {/*      target={"_blank"}*/}
+        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      rel="noopener noreferrer"*/}
+        {/*    >*/}
+        {/*      Terms of use*/}
+        {/*    </a>*/}
+        {/*    <a*/}
+        {/*      href="/legal/saas_terms_of_use.html"*/}
+        {/*      target={"_blank"}*/}
+        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      rel="noopener noreferrer"*/}
+        {/*    >*/}
+        {/*      SAAS Terms of use*/}
+        {/*    </a>*/}
+        {/*    <a*/}
+        {/*      href="/legal/privacy_policy.html"*/}
+        {/*      target={"_blank"}*/}
+        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      rel="noopener noreferrer"*/}
+        {/*    >*/}
+        {/*      Privacy Policy*/}
+        {/*    </a>*/}
+        {/*    <a*/}
+        {/*      href="https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"*/}
+        {/*      target={"_blank"}*/}
+        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      rel="noopener noreferrer"*/}
+        {/*    >*/}
+        {/*      Source Code*/}
+        {/*    </a>*/}
+        {/*  </div>*/}
+        {/*</footer>*/}
         <div
           className={`${pricing ? "" : "hidden"} fixed inset-0 bg-purple-900 bg-opacity-20 overflow-y-auto h-full w-full flex items-center justify-center`}
           onClick={onClose}
