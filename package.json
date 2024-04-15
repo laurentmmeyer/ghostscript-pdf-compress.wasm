@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:local": "vite build && node post-build.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.12",
     "prettier": "3.2.5",
     "vite": "^3.0.0"
   }

@@ -21,7 +21,7 @@ function Commercial({ children }) {
 
   return (
     <>
-      <div className="h-screen w-full flex flex-col text-black">
+      <div className="w-full flex flex-col text-black">
         {/* Top Navigation Bar */}
         {/*<nav className="bg-purple-900 shadow">*/}
         {/*  <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">*/}
@@ -69,7 +69,7 @@ function Commercial({ children }) {
         {/*</nav>*/}
 
         {/* Main Content */}
-        <main className="bg-purple-100 w-full flex-grow flex flex-col items-center justify-center p-4">
+        <div className="bg-purple-100 w-full flex-grow flex flex-col items-center justify-center p-4">
           {!hasChildren && !loading && (
             <>
               <h1 className="text-center text-blue font-bold text-4xl mb-4 font-raleway">
@@ -95,7 +95,7 @@ function Commercial({ children }) {
           {loading && <p>Loading...</p>}
 
           {!loading && <div className={"w-full"}>{children}</div>}
-        </main>
+        </div>
 
         {/*<footer className="bg-white w-full flex items-center justify-center	">*/}
         {/*  <div className=" py-4 text-center flex space-x-4">*/}

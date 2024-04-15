@@ -171,9 +171,9 @@ function DropZone({onLimitReached, user}) {
         </div>
       </div>
       {files.length > 0 && (
-        <ul className="mt-4">
+        <div className="mt-4">
           {files.map((file, index) => (
-            <li
+            <div
               key={index}
               className="flex items-center font-dm rounded border-2 border-purple-900	pl-4 py-1 my-1"
             >
@@ -200,9 +200,9 @@ function DropZone({onLimitReached, user}) {
                   ></path>
                 </svg>
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
       {files.length > 0 && (
         <button
@@ -226,17 +226,17 @@ function DropZone({onLimitReached, user}) {
             >
               <div
                 className="flex flex-row items-center justify-between my-1 p-3 border-2 border-purple-900 hover:bg-white rounded-lg">
-                <p className="text-sm text-center truncate font-dm ">
+                <div className="text-sm text-center truncate font-dm ">
                   {file.name}
-                </p>
+                </div>
                 <div
                   className={"flex flex-row min-w-24 justify-end items-center"}
                 >
                   <div className="text-xs font-dm mr-2">
-                    <p>{(file.newSize / 1048576).toFixed(2)} MB</p>
-                    <p>{(file.reduction * 100).toFixed(0)}% less</p>
+                    <div>{(file.newSize / 1048576).toFixed(2)} MB</div>
+                    <div>{(file.reduction * 100).toFixed(0)}% less</div>
                   </div>
-                  <img className="max-h-6" src="./cloud.svg"/>
+                  <img className="max-h-6 !m-0" src="./cloud.svg"/>
                 </div>
               </div>
             </a>
