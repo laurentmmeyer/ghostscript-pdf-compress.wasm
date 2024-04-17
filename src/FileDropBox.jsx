@@ -1,6 +1,6 @@
-import React, {useCallback, useMemo, useState} from "react";
-import {useDropzone} from "react-dropzone";
-import {_GSPS2PDF} from "./lib/worker-init.js";
+import React, { useCallback, useMemo, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { _GSPS2PDF } from "./lib/worker-init.js";
 
 const baseStyle = {
   flex: 1,
@@ -38,10 +38,10 @@ function loadPDFData(response, filename) {
     xhr.responseType = "arraybuffer";
     xhr.onload = function () {
       window.URL.revokeObjectURL(response);
-      const blob = new Blob([xhr.response], {type: "application/pdf"});
+      const blob = new Blob([xhr.response], { type: "application/pdf" });
       const pdfURL = window.URL.createObjectURL(blob);
       const size = xhr.response.byteLength;
-      resolve({pdfURL, size});
+      resolve({ pdfURL, size });
     };
     xhr.send();
   });
@@ -49,7 +49,7 @@ function loadPDFData(response, filename) {
 
 const minFilename = (filename) => filename.replace(".pdf", "-min.pdf");
 
-function DropZone({onLimitReached, user}) {
+function DropZone({ onLimitReached, user }) {
   const [files, setFiles] = useState([]);
   const [converted, setConverted] = useState([]);
   const [state, setState] = useState("selection");
@@ -58,7 +58,7 @@ function DropZone({onLimitReached, user}) {
     (acceptedFiles) => {
       const addedFiles = acceptedFiles.map((file) => {
         const url = window.URL.createObjectURL(file);
-        return {name: file.name, size: file.size, url};
+        return { name: file.name, size: file.size, url };
       });
       setFiles((files) => [...files, ...addedFiles]);
     },
@@ -67,8 +67,8 @@ function DropZone({onLimitReached, user}) {
 
   async function compressPDFs(files) {
     if (files[0]) {
-      const {name, url, size} = files[0];
-      const dataObject = {psDataURL: url};
+      const { name, url, size } = files[0];
+      const dataObject = { psDataURL: url };
       // _GSPS2PDF(
       //   dataObject,
       //   (element) => {
@@ -101,8 +101,8 @@ function DropZone({onLimitReached, user}) {
       //   (...args) => console.log("Progress:", JSON.stringify(args)),
       //   (element) => console.log("Status Update:", JSON.stringify(element)),
       // );
-      const element = await _GSPS2PDF(dataObject)
-      const {pdfURL, size: newSize} = await loadPDFData(element, name)
+      const {blob:element, cleanup} = await _GSPS2PDF(dataObject);
+      const { pdfURL, size: newSize } = await loadPDFData(element, name);
       setConverted((converted) => [
         ...converted,
         {
@@ -119,7 +119,10 @@ function DropZone({onLimitReached, user}) {
         setState("selection");
       }
       setTimeout(
-        () => compressPDFs(files.filter((_, index) => index > 0)),
+        () => {
+          cleanup()
+          compressPDFs(files.filter((_, index) => index > 0))
+        },
         600,
       );
     }
@@ -144,9 +147,9 @@ function DropZone({onLimitReached, user}) {
     }
   }
 
-  const {getRootProps, getInputProps, isFocused, isDragAccept, isDragReject} =
+  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
-      accept: {"application/pdf": []},
+      accept: { "application/pdf": [] },
       onDrop,
       disabled: state === "converting",
     });
@@ -163,7 +166,7 @@ function DropZone({onLimitReached, user}) {
   return (
     <>
       <div className="container mb-5">
-        <div {...getRootProps({style})}>
+        <div {...getRootProps({ style })}>
           <input {...getInputProps()} />
           <p className={"py-5 my-5"}>
             Drop your files here, or click to select files
@@ -220,12 +223,11 @@ function DropZone({onLimitReached, user}) {
             <a
               key={index}
               className="shrink-0 transform transition duration-500 ease-out scale-0 "
-              style={{animation: `popIn ${index * 0.2 + 0.5}s forwards`}}
+              style={{ animation: `popIn ${index * 0.2 + 0.5}s forwards` }}
               download={file.downloadName}
               href={file.pdfURL}
             >
-              <div
-                className="flex flex-row items-center justify-between my-1 p-3 border-2 border-purple-900 hover:bg-white rounded-lg">
+              <div className="flex flex-row items-center justify-between my-1 p-3 border-2 border-purple-900 hover:bg-white rounded-lg">
                 <div className="text-sm text-center truncate font-dm ">
                   {file.name}
                 </div>
@@ -236,7 +238,7 @@ function DropZone({onLimitReached, user}) {
                     <div>{(file.newSize / 1048576).toFixed(2)} MB</div>
                     <div>{(file.reduction * 100).toFixed(0)}% less</div>
                   </div>
-                  <img className="max-h-6 !m-0" src="./cloud.svg"/>
+                  <img className="max-h-6 !m-0" src="./cloud.svg" />
                 </div>
               </div>
             </a>

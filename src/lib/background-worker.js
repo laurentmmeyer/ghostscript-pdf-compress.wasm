@@ -4,16 +4,13 @@ function loadScript() {
 
 var Module;
 
-function _GSPS2PDF(
-  dataStruct,
-  responseCallback,
-) {
+function _GSPS2PDF(dataStruct, responseCallback) {
   // first download the ps data
   var xhr = new XMLHttpRequest();
   xhr.open("GET", dataStruct.psDataURL);
   xhr.responseType = "arraybuffer";
   xhr.onload = function () {
-    console.log('onload')
+    console.log("onload");
     // release the URL
     self.URL.revokeObjectURL(dataStruct.psDataURL);
     //set up EMScripten environment
@@ -25,7 +22,9 @@ function _GSPS2PDF(
       ],
       postRun: [
         function () {
-          var uarray = self.Module.FS.readFile("output.pdf", { encoding: "binary" });
+          var uarray = self.Module.FS.readFile("output.pdf", {
+            encoding: "binary",
+          });
           var blob = new Blob([uarray], { type: "application/octet-stream" });
           var pdfDataURL = self.URL.createObjectURL(blob);
           responseCallback({ pdfDataURL: pdfDataURL, url: dataStruct.url });
@@ -68,7 +67,7 @@ function _GSPS2PDF(
       //   statusUpdateCallback(text);
       // },
       totalDependencies: 0,
-      noExitRuntime: 1
+      noExitRuntime: 1,
     };
     // Module.setStatus("Loading Ghostscript...");
     if (!self.Module) {
@@ -84,15 +83,14 @@ function _GSPS2PDF(
   xhr.send();
 }
 
-
-self.addEventListener('message', function({data:e}) {
-  console.log("message", e)
+self.addEventListener("message", function ({ data: e }) {
+  console.log("message", e);
   // e.data contains the message sent to the worker.
-  if (e.target !== 'wasm'){
+  if (e.target !== "wasm") {
     return;
   }
-  console.log('Message received from main script', e.data);
-  _GSPS2PDF(e.data, ({pdfDataURL}) => self.postMessage(pdfDataURL))
+  console.log("Message received from main script", e.data);
+  _GSPS2PDF(e.data, ({ pdfDataURL }) => self.postMessage(pdfDataURL));
 });
 
-console.log("Worker ready")
+console.log("Worker ready");

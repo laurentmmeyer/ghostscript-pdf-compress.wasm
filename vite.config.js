@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: { target: "esnext" },
   base: "",
-  worker: {format :'es'}
+  worker: { format: "es" },
 });
