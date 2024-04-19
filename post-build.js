@@ -10,13 +10,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Define paths
 const buildDir = path.join(__dirname, "dist");
 const targetAssetsDir = "/Users/laurentmeyer/Code/hugoplate/static/assets";
-const targetContentDir =
-  "/Users/laurentmeyer/Code/hugoplate/content/english/app";
+const targetContentFile =
+  "/Users/laurentmeyer/Code/hugoplate/themes/hugoplate/layouts/index.html";
 
 // Clean directories
 async function cleanDirectories() {
   await fs.emptyDir(targetAssetsDir);
-  await fs.emptyDir(targetContentDir);
+  await fs.remove(targetContentFile);
 }
 
 // Move assets
@@ -34,14 +34,20 @@ async function updateAndMoveIndex() {
 
   // Construct new index.html content
   const indexContent = `
+{{ define "main" }}
 <script type="module" crossorigin src="/${jsFile}"></script>
+
 <link rel="stylesheet" href="/${cssFile}">
+<section class="section pt-14">
 <div id="root" class="w-full"></div>
+</section>
+
+{{ end }}
 `.trim();
 
   // Write updated index.html to targetContentDir
   await fs.outputFile(
-    path.join(targetContentDir, "index.html"),
+    targetContentFile,
     indexContent,
     "utf8",
   );

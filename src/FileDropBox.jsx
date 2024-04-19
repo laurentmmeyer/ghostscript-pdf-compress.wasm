@@ -69,38 +69,6 @@ function DropZone({ onLimitReached, user }) {
     if (files[0]) {
       const { name, url, size } = files[0];
       const dataObject = { psDataURL: url };
-      // _GSPS2PDF(
-      //   dataObject,
-      //   (element) => {
-      //     console.log(element);
-      //     console.log("_GSPS2PDF", "callback");
-      //     // setState("toBeDownloaded");
-      //     loadPDFData(element, name).then(({ pdfURL, size: newSize }) => {
-      //       setConverted((converted) => [
-      //         ...converted,
-      //         {
-      //           name,
-      //           pdfURL,
-      //           downloadName: minFilename(name),
-      //           newSize,
-      //           reduction: (size - newSize) / size,
-      //         },
-      //       ]);
-      //       const newFiles = files.filter((e) => e.name !== name);
-      //       setFiles((files) => newFiles);
-      //       if (!newFiles.length) {
-      //         setState("selection");
-      //       }
-      //       // recursive call with some time to draw the interface
-      //       setTimeout(
-      //         () => compressPDFs(files.filter((_, index) => index > 0)),
-      //         600,
-      //       );
-      //     });
-      //   },
-      //   (...args) => console.log("Progress:", JSON.stringify(args)),
-      //   (element) => console.log("Status Update:", JSON.stringify(element)),
-      // );
       const {blob:element, cleanup} = await _GSPS2PDF(dataObject);
       const { pdfURL, size: newSize } = await loadPDFData(element, name);
       setConverted((converted) => [
@@ -139,6 +107,9 @@ function DropZone({ onLimitReached, user }) {
             throw new Error("Nope");
           }
         });
+      }
+      if (window.gtag){
+        window.gtag("event", "conversion", {files_count: files.length})
       }
       setState((_) => "converting");
       compressPDFs(files);

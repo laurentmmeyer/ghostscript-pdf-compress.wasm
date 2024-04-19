@@ -10,6 +10,15 @@ const useAuth = () => {
   const [loading, setLoading] = useState(true); // Tracks whether we're still waiting on the auth state
   const [refreshTrigger, setRefreshTrigger] = useState(false); // Add a trigger for refresh
 
+  const setUserWithAnalytics = (user) => {
+    if (window.gtag){
+      window.gtag('config', window.GTAG_ID, {
+        'user_id': user.firebaseUser.uid
+      });
+    }
+    setUser(user);
+  }
+
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -17,7 +26,7 @@ const useAuth = () => {
         // Attempt to sign in anonymously if no user is detected
         signInAnonymously(auth).catch((error) => {
           setError(error.message);
-          setUser({ firebaseUser: currentUser });
+          setUserWithAnalytics({ firebaseUser: currentUser });
           setLoading(false); // Authentication state is resolved
         });
       } else {
@@ -26,13 +35,13 @@ const useAuth = () => {
           const docSnap = await getDoc(userDocRef);
           if (docSnap.exists()) {
             // Combine Firestore user data with Firebase auth user
-            setUser({
+            setUserWithAnalytics({
               firebaseUser: currentUser,
               firestoreUser: docSnap.data(),
             });
           } else {
             // No Firestore document found for the user, set only firebaseUser
-            setUser({ firebaseUser: currentUser, firestoreUser: {} });
+            setUserWithAnalytics({ firebaseUser: currentUser, firestoreUser: {} });
           }
         } catch (fetchError) {
           setError(fetchError.message);
