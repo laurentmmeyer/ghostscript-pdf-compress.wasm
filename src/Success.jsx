@@ -31,7 +31,7 @@ const SuccessMessage = ({ purchaseType, product }) => {
               authentication-free version. <br />
               Should you require assistance with setting up your infrastructure,
               please don't hesitate to reach out{" "}
-              <a className={"underline"} href={"mailto:contact@saferpdf.com"}>
+              <a className={"app-underline"} href={"mailto:contact@saferpdf.com"}>
                 contact@saferpdf.com
               </a>
               .{" "}
@@ -43,13 +43,13 @@ const SuccessMessage = ({ purchaseType, product }) => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="bg-white rounded-lg p-6 shadow-md">
-        <div className="flex flex-col items-center">
+    <div className="app-flex app-flex-col app-items-center app-justify-center app-h-screen">
+      <div className="app-bg-white app-rounded-lg app-p-6 app-shadow-md">
+        <div className="app-flex app-flex-col app-items-center">
           {/* Green check icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-16 w-16 text-green-500"
+            className="app-h-16 app-w-16 app-text-green-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -62,7 +62,7 @@ const SuccessMessage = ({ purchaseType, product }) => {
             />
           </svg>
           {/* Display the determined message */}
-          <div className="mt-4 text-center text-2xl font-semibold text-gray-700">
+          <div className="app-mt-4 app-text-center app-text-2xl app-font-semibold app-text-gray-700">
             {message}
           </div>
         </div>
@@ -83,36 +83,36 @@ const Success = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-lg font-semibold">Loading...</p>
+      <div className="app-flex app-justify-center app-items-center app-h-screen">
+        <p className="app-text-lg app-font-semibold">Loading...</p>
       </div>
     );
   }
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <div className="text-lg font-semibold max-w-screen-md	">
+    <div className="app-flex app-flex-col app-items-center app-justify-center app-h-screen app-gap-4">
+      <div className="app-text-lg app-font-semibold app-max-w-screen-md	">
         <SuccessMessage
           purchaseType={user?.firestoreUser?.mode}
           product={user?.firestoreUser?.productDescription}
         />
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div className="app-flex app-flex-col app-items-center app-gap-2">
         <a
           href="https://dashboard.stripe.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 bg-purple-900 text-white rounded hover:bg-purple-800 transition duration-150 ease-in-out"
+          className="app-px-4 app-py-2 app-bg-purple-900 app-text-white app-rounded hover:app-bg-purple-800 app-transition app-duration-150 app-ease-in-out"
         >
           View my plan
         </a>
         <button
           onClick={handleLoginWithGoogle}
-          className="bg-white p-2 rounded shadow hover:shadow-md transition duration-150 ease-in-out"
+          className="app-bg-white app-p-2 app-rounded app-shadow hover:app-shadow-md app-transition app-duration-150 app-ease-in-out"
         >
           <img
             src="https://freesvg.org/img/1534129544.png"
             alt="Google sign-in"
-            className="h-8"
+            className="app-h-8"
           />
           {/* Consider using a local or hosted image that represents "Sign in with Google" */}
         </button>

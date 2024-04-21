@@ -136,20 +136,20 @@ function DropZone({ onLimitReached, user }) {
   );
   return (
     <>
-      <div className="container mb-5">
+      <div className="container app-mb-5">
         <div {...getRootProps({ style })}>
           <input {...getInputProps()} />
-          <p className={"py-5 my-5"}>
+          <p className={"app-py-5 app-my-5"}>
             Drop your files here, or click to select files
           </p>
         </div>
       </div>
       {files.length > 0 && (
-        <div className="mt-4">
+        <div className="app-mt-4">
           {files.map((file, index) => (
             <div
               key={index}
-              className="flex items-center font-dm rounded border-2 border-purple-900	pl-4 py-1 my-1"
+              className="app-flex app-items-center font-dm app-rounded app-border-2 app-border-purple-900	app-pl-4 app-py-1 app-my-1"
             >
               <span className="font-dm">{file.name}</span> -{" "}
               {(file.size / 1048576).toFixed(2)} MB
@@ -157,10 +157,10 @@ function DropZone({ onLimitReached, user }) {
                 onClick={() =>
                   setFiles((files) => files.filter((e, i) => i !== index))
                 }
-                className="text-red-500 hover:text-red-700 ml-2 p-1"
+                className="app-text-red-500 hover:app-text-red-700 app-ml-2 app-p-1"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="app-w-5 app-h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -180,7 +180,7 @@ function DropZone({ onLimitReached, user }) {
       )}
       {files.length > 0 && (
         <button
-          className="w-full mt-5 font-dm text-purple-100 bg-purple-900 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline transform transition duration-500 ease-out"
+          className="app-w-full app-mt-5 font-dm app-text-purple-100 app-bg-purple-900 app-text-white app-py-2 app-px-4 app-rounded focus:app-outline-none focus:app-shadow-outline app-transform app-transition app-duration-500 app-ease-out"
           type="button"
           disabled={state === "converting"}
           onClick={launchCompression}
@@ -193,23 +193,23 @@ function DropZone({ onLimitReached, user }) {
           {converted.map((file, index) => (
             <a
               key={index}
-              className="shrink-0 transform transition duration-500 ease-out scale-0 "
+              className="shrink-0 app-transform app-transition app-duration-500 app-ease-out app-scale-0 "
               style={{ animation: `popIn ${index * 0.2 + 0.5}s forwards` }}
               download={file.downloadName}
               href={file.pdfURL}
             >
-              <div className="flex flex-row items-center justify-between my-1 p-3 border-2 border-purple-900 hover:bg-white rounded-lg">
-                <div className="text-sm text-center truncate font-dm ">
+              <div className="app-flex app-flex-row app-items-center app-justify-between app-my-1 app-p-3 app-border-2 app-border-purple-900 hover:app-bg-white app-rounded-lg">
+                <div className="app-text-sm app-text-center app-truncate font-dm ">
                   {file.name}
                 </div>
                 <div
-                  className={"flex flex-row min-w-24 justify-end items-center"}
+                  className={"app-flex app-flex-row min-w-24 app-justify-end app-items-center"}
                 >
-                  <div className="text-xs font-dm mr-2">
+                  <div className="app-text-xs font-dm app-mr-2">
                     <div>{(file.newSize / 1048576).toFixed(2)} MB</div>
                     <div>{(file.reduction * 100).toFixed(0)}% less</div>
                   </div>
-                  <img className="max-h-6 !m-0" src="./cloud.svg" />
+                  <img className="app-max-h-6 !m-0" src="./cloud.svg" />
                 </div>
               </div>
             </a>

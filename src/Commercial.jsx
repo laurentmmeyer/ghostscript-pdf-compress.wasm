@@ -21,44 +21,44 @@ function Commercial({ children }) {
 
   return (
     <>
-      <div className="w-full flex flex-col text-black">
+      <div className="app-w-full app-flex app-flex-col app-text-black">
         {/* Top Navigation Bar */}
-        {/*<nav className="bg-purple-900 shadow">*/}
-        {/*  <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">*/}
-        {/*    <div className="flex justify-between h-16">*/}
+        {/*<nav className="app-bg-purple-900 app-shadow">*/}
+        {/*  <div className="max-w-9xl app-mx-auto app-px-4 sm:app-px-6 lg:app-px-8">*/}
+        {/*    <div className="app-flex app-justify-between app-h-16">*/}
         {/*      /!* Company Title *!/*/}
-        {/*      <div className="flex-shrink-0 flex items-center">*/}
+        {/*      <div className="app-flex-shrink-0 app-flex app-items-center">*/}
         {/*        <a*/}
         {/*          href="/"*/}
-        {/*          className="text-lg text-purple-100 hover:text-white font-medium font-dm flex-row flex justify-center items-center"*/}
+        {/*          className="app-text-lg app-text-purple-100 hover:app-text-white app-font-medium font-dm app-flex-row app-flex app-justify-center app-items-center"*/}
         {/*        >*/}
         {/*          <img*/}
         {/*            src="/pdf.png"*/}
         {/*            alt="SaferPDF"*/}
-        {/*            className="h-5 w-5 mr-2"*/}
+        {/*            className="app-h-5 app-w-5 app-mr-2"*/}
         {/*          />*/}
         {/*          SaferPDF*/}
         {/*        </a>*/}
         {/*      </div>*/}
         {/*      /!* Navigation Items *!/*/}
-        {/*      <div className="flex">*/}
-        {/*        <div className="flex-shrink-0 flex items-center space-x-5">*/}
+        {/*      <div className="app-flex">*/}
+        {/*        <div className="app-flex-shrink-0 app-flex app-items-center app-space-x-5">*/}
         {/*          /!* Navigation Item: Pricing *!/*/}
         {/*          <a*/}
         {/*            href="/"*/}
-        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*            className="app-text-lg app-text-purple-100 hover:app-text-white app-font-medium font-dm"*/}
         {/*          >*/}
         {/*            Compress*/}
         {/*          </a>*/}
         {/*          <a*/}
         {/*            href="/pricing"*/}
-        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*            className="app-text-lg app-text-purple-100 hover:app-text-white app-font-medium font-dm"*/}
         {/*          >*/}
         {/*            Pricing*/}
         {/*          </a>*/}
         {/*          <a*/}
         {/*            href="/blog"*/}
-        {/*            className="text-lg text-purple-100 hover:text-white font-medium font-dm"*/}
+        {/*            className="app-text-lg app-text-purple-100 hover:app-text-white app-font-medium font-dm"*/}
         {/*          >*/}
         {/*            Blog*/}
         {/*          </a>*/}
@@ -69,13 +69,13 @@ function Commercial({ children }) {
         {/*</nav>*/}
 
         {/* Main Content */}
-        <div className="bg-purple-100 w-full flex-grow flex flex-col items-center justify-center p-4">
+        <div className="app-bg-purple-100 app-w-full app-flex-grow app-flex app-flex-col app-items-center app-justify-center app-p-4">
           {!hasChildren && !loading && (
             <>
-              <h1 className="text-center text-blue font-bold text-4xl mb-4 font-raleway">
+              <h1 className="app-text-center text-blue app-font-bold app-text-4xl app-mb-4 font-raleway">
                 Your PDFs have never been safer.
               </h1>
-              <p className="max-w-xl text-center text-lg mb-6 font-sans ">
+              <p className="app-max-w-xl app-text-center app-text-lg app-mb-6 app-font-sans ">
                 This PDF compressor works right in your browser using the latest
                 web technologies, meaning it does not rely on external servers.
                 <br />
@@ -86,7 +86,7 @@ function Commercial({ children }) {
                 <b>Safe, fast, and private</b> - all without leaving your
                 browser.
               </p>
-              <div className="w-full max-w-md">
+              <div className="app-w-full app-max-w-md">
                 <DropZone onLimitReached={onLimitReached} user={user} />
               </div>
             </>
@@ -94,15 +94,15 @@ function Commercial({ children }) {
 
           {loading && <p>Loading...</p>}
 
-          {!loading && <div className={"w-full"}>{children}</div>}
+          {!loading && <div className={"app-w-full"}>{children}</div>}
         </div>
 
-        {/*<footer className="bg-white w-full flex items-center justify-center	">*/}
-        {/*  <div className=" py-4 text-center flex space-x-4">*/}
+        {/*<footer className="app-bg-white app-w-full app-flex app-items-center app-justify-center	">*/}
+        {/*  <div className=" app-py-4 app-text-center app-flex app-space-x-4">*/}
         {/*    <a*/}
         {/*      href="/legal/general_terms_of_use.html"*/}
         {/*      target={"_blank"}*/}
-        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      className="hover:app-underline app-text-black font-dm"*/}
         {/*      rel="noopener noreferrer"*/}
         {/*    >*/}
         {/*      Terms of use*/}
@@ -110,7 +110,7 @@ function Commercial({ children }) {
         {/*    <a*/}
         {/*      href="/legal/saas_terms_of_use.html"*/}
         {/*      target={"_blank"}*/}
-        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      className="hover:app-underline app-text-black font-dm"*/}
         {/*      rel="noopener noreferrer"*/}
         {/*    >*/}
         {/*      SAAS Terms of use*/}
@@ -118,7 +118,7 @@ function Commercial({ children }) {
         {/*    <a*/}
         {/*      href="/legal/privacy_policy.html"*/}
         {/*      target={"_blank"}*/}
-        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      className="hover:app-underline app-text-black font-dm"*/}
         {/*      rel="noopener noreferrer"*/}
         {/*    >*/}
         {/*      Privacy Policy*/}
@@ -126,7 +126,7 @@ function Commercial({ children }) {
         {/*    <a*/}
         {/*      href="https://github.com/laurentmmeyer/ghostscript-pdf-compress.wasm"*/}
         {/*      target={"_blank"}*/}
-        {/*      className="hover:underline text-black font-dm"*/}
+        {/*      className="hover:app-underline app-text-black font-dm"*/}
         {/*      rel="noopener noreferrer"*/}
         {/*    >*/}
         {/*      Source Code*/}
@@ -134,17 +134,17 @@ function Commercial({ children }) {
         {/*  </div>*/}
         {/*</footer>*/}
         <div
-          className={`${pricing ? "" : "hidden"} fixed inset-0 bg-purple-900 bg-opacity-20 overflow-y-auto h-full w-full flex items-center justify-center`}
+          className={`${pricing ? "" : "app-hidden"} app-fixed app-inset-0 app-bg-purple-900 app-bg-opacity-20 app-overflow-y-auto app-h-full app-w-full app-flex app-items-center app-justify-center`}
           onClick={onClose}
         >
-          <div className="relative mx-auto p-3 border w-96 shadow-lg rounded-md bg-white">
-            <div className="text-right">
+          <div className="app-relative app-mx-auto app-p-3 app-border app-w-96 app-shadow-lg app-rounded-md app-bg-white">
+            <div className="app-text-right">
               <button
                 onClick={onClose}
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                className="app-text-gray-400 app-bg-transparent hover:app-bg-gray-200 hover:app-text-gray-900 app-rounded-lg app-text-sm app-p-1.5 app-ml-auto app-inline-flex app-items-center"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="app-w-5 app-h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -157,16 +157,16 @@ function Commercial({ children }) {
                 </svg>
               </button>
             </div>
-            <div className="text-center p-3 flex-auto justify-center">
-              <p className="font-dm text-gray-900 text-lg leading-relaxed">
+            <div className="app-text-center app-p-3 app-flex-auto app-justify-center">
+              <p className="font-dm app-text-gray-900 app-text-lg app-leading-relaxed">
                 You're loving our product! You cannot convert more than 10
                 documents in 24 hours. For more, you need our Pro model.
               </p>
             </div>
-            <div className="p-3 mt-2 text-center space-x-4 md:block">
+            <div className="app-p-3 app-mt-2 app-text-center app-space-x-4 md:app-block">
               <a
                 href="/pricing" // Change this to your pricing page URL
-                className="mb-2 md:mb-0 bg-purple-900 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-purple-800"
+                className="app-mb-2 md:app-mb-0 app-bg-purple-900 app-px-5 app-py-2 app-text-sm app-shadow-sm app-font-medium app-tracking-wider app-text-white app-rounded-full hover:app-shadow-lg hover:app-bg-purple-800"
                 role="button"
               >
                 Go to Pricing
