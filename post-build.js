@@ -54,7 +54,10 @@ async function updateAndMoveIndex() {
   // Write updated index.html to targetContentDir
   await fs.outputFile(targetContentFile, indexContent, "utf8");
 
-  const successContent = `<script type="module" crossorigin src="/${successJSFile}"></script>
+  const successContent = `
+---
+---
+<script type="module" crossorigin src="/${successJSFile}"></script>
 
 <link rel="stylesheet" href="/${cssFile}">
 <section class="section pt-14">
@@ -64,6 +67,8 @@ async function updateAndMoveIndex() {
   await fs.outputFile(targetSuccessFile, successContent, "utf8");
 
   const loginContent = `
+---
+---
 <script type="module" crossorigin src="/${loginJSFile}"></script>
 <link rel="stylesheet" href="/${cssFile}">
 <section class="section pt-14">
