@@ -15,7 +15,7 @@ const targetContentFile =
 const targetSuccessFile =
   "/Users/laurentmeyer/Code/hugoplate/content/english/success/index.html";
 const targetLoginFile =
-  "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.md";
+  "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.html";
 
 // Clean directories
 async function cleanDirectories() {
