@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { _GSPS2PDF } from "./lib/worker-init.js";
+import LoadingButton from "./LoadingButton.jsx";
 
 const baseStyle = {
   flex: 1,
@@ -177,12 +178,12 @@ function DropZone({ onLimitReached, user }) {
       )}
       {files.length > 0 && (
         <button
-          className="app-w-full app-mt-5 font-dm app-text-purple-100 app-bg-purple-900 app-text-white app-py-2 app-px-4 app-rounded focus:app-outline-none focus:app-shadow-outline app-transform app-transition app-duration-500 app-ease-out"
+          className="app-w-full app-my-5 font-dm app-text-purple-100 app-bg-purple-900 app-text-white app-py-2 app-px-4 app-rounded focus:app-outline-none focus:app-shadow-outline app-transform app-transition app-duration-500 app-ease-out"
           type="button"
           disabled={state === "converting"}
           onClick={launchCompression}
         >
-          {state === "converting" ? "Loading..." : "Compress 🚀"}
+          {state === "converting" ? <LoadingButton/> : "Compress 🚀"}
         </button>
       )}
       {converted.length > 0 && (
@@ -201,7 +202,7 @@ function DropZone({ onLimitReached, user }) {
                 </div>
                 <div
                   className={
-                    "app-flex app-flex-row min-w-24 app-justify-end app-items-center"
+                    "app-flex app-flex-row app-min-w-24 app-justify-end app-items-center"
                   }
                 >
                   <div className="app-text-xs font-dm app-mr-2">

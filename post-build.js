@@ -13,9 +13,9 @@ const targetAssetsDir = "/Users/laurentmeyer/Code/hugoplate/static/assets";
 const targetContentFile =
   "/Users/laurentmeyer/Code/hugoplate/themes/hugoplate/layouts/index.html";
 const targetSuccessFile =
-  "/Users/laurentmeyer/Code/hugoplate/content/english/success/index.html";
+  "/Users/laurentmeyer/Code/hugoplate/content/english/success/index.md";
 const targetLoginFile =
-  "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.html";
+  "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.md";
 
 // Clean directories
 async function cleanDirectories() {

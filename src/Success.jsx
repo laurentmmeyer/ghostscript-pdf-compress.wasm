@@ -24,8 +24,12 @@ const SuccessMessage = ({ purchaseType, product }) => {
           <p>
             You can now compress as many PDF as you like on this page. <br />
           </p>
-          <PurpleLink link="/" text="Compress PDFs"/>
-          <PurpleLink link="https://billing.stripe.com/p/login/test_3cs7tB4AS5VV86c4gg" text="View my plan" newTab={true}/>
+          <PurpleLink link="/" text="Compress PDFs" />
+          <PurpleLink
+            link="https://billing.stripe.com/p/login/test_3cs7tB4AS5VV86c4gg"
+            text="View my plan"
+            newTab={true}
+          />
           {product === "Entreprise" && (
             <p>
               We'll be in touch soon to grant you access to an

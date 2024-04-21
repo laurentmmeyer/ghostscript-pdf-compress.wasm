@@ -18,7 +18,6 @@ const Login = () => {
     window.location.href = "/success";
   } else {
     return (
-
       <div className="app-w-full app-flex app-justify-center app-items-center app-flex-col app-gap-5">
         <span className="app-text-4xl">Login</span>
         <button
