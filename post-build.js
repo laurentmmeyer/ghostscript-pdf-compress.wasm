@@ -33,7 +33,7 @@ async function updateAndMoveIndex() {
   // Find JS and CSS files
   const [jsFile] = glob.sync("assets/index.*.js", { cwd: buildDir });
   const [successJSFile] = glob.sync("assets/success.*.js", { cwd: buildDir });
-  const [cssFile] = glob.sync("assets/main.*.css", { cwd: buildDir });
+  const [cssFile] = glob.sync("assets/*.css", { cwd: buildDir });
 
   // Construct new index.html content
   const indexContent = `
