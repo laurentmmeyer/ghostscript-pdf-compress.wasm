@@ -11,13 +11,13 @@ const useAuth = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(false); // Add a trigger for refresh
 
   const setUserWithAnalytics = (user) => {
-    if (window.gtag){
-      window.gtag('config', window.GTAG_ID, {
-        'user_id': user.firebaseUser.uid
+    if (window.gtag) {
+      window.gtag("config", window.GTAG_ID, {
+        user_id: user.firebaseUser.uid,
       });
     }
     setUser(user);
-  }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -41,7 +41,10 @@ const useAuth = () => {
             });
           } else {
             // No Firestore document found for the user, set only firebaseUser
-            setUserWithAnalytics({ firebaseUser: currentUser, firestoreUser: {} });
+            setUserWithAnalytics({
+              firebaseUser: currentUser,
+              firestoreUser: {},
+            });
           }
         } catch (fetchError) {
           setError(fetchError.message);

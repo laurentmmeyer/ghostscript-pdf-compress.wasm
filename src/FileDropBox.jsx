@@ -69,7 +69,7 @@ function DropZone({ onLimitReached, user }) {
     if (files[0]) {
       const { name, url, size } = files[0];
       const dataObject = { psDataURL: url };
-      const {blob:element, cleanup} = await _GSPS2PDF(dataObject);
+      const { blob: element, cleanup } = await _GSPS2PDF(dataObject);
       const { pdfURL, size: newSize } = await loadPDFData(element, name);
       setConverted((converted) => [
         ...converted,
@@ -86,13 +86,10 @@ function DropZone({ onLimitReached, user }) {
       if (!newFiles.length) {
         setState("selection");
       }
-      setTimeout(
-        () => {
-          cleanup()
-          compressPDFs(files.filter((_, index) => index > 0))
-        },
-        600,
-      );
+      setTimeout(() => {
+        cleanup();
+        compressPDFs(files.filter((_, index) => index > 0));
+      }, 600);
     }
   }
 
@@ -108,8 +105,8 @@ function DropZone({ onLimitReached, user }) {
           }
         });
       }
-      if (window.gtag){
-        window.gtag("event", "conversion", {files_count: files.length})
+      if (window.gtag) {
+        window.gtag("event", "conversion", { files_count: files.length });
       }
       setState((_) => "converting");
       compressPDFs(files);
@@ -203,7 +200,9 @@ function DropZone({ onLimitReached, user }) {
                   {file.name}
                 </div>
                 <div
-                  className={"app-flex app-flex-row min-w-24 app-justify-end app-items-center"}
+                  className={
+                    "app-flex app-flex-row min-w-24 app-justify-end app-items-center"
+                  }
                 >
                   <div className="app-text-xs font-dm app-mr-2">
                     <div>{(file.newSize / 1048576).toFixed(2)} MB</div>

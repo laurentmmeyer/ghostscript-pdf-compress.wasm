@@ -14,6 +14,8 @@ const targetContentFile =
   "/Users/laurentmeyer/Code/hugoplate/themes/hugoplate/layouts/index.html";
 const targetSuccessFile =
   "/Users/laurentmeyer/Code/hugoplate/content/english/success/index.html";
+const targetLoginFile =
+  "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.md";
 
 // Clean directories
 async function cleanDirectories() {
@@ -33,6 +35,7 @@ async function updateAndMoveIndex() {
   // Find JS and CSS files
   const [jsFile] = glob.sync("assets/index.*.js", { cwd: buildDir });
   const [successJSFile] = glob.sync("assets/success.*.js", { cwd: buildDir });
+  const [loginJSFile] = glob.sync("assets/login.*.js", { cwd: buildDir });
   const [cssFile] = glob.sync("assets/*.css", { cwd: buildDir });
 
   // Construct new index.html content
@@ -49,11 +52,7 @@ async function updateAndMoveIndex() {
 `.trim();
 
   // Write updated index.html to targetContentDir
-  await fs.outputFile(
-    targetContentFile,
-    indexContent,
-    "utf8",
-  );
+  await fs.outputFile(targetContentFile, indexContent, "utf8");
 
   const successContent = `<script type="module" crossorigin src="/${successJSFile}"></script>
 
@@ -61,13 +60,17 @@ async function updateAndMoveIndex() {
 <section class="section pt-14">
 <div id="root" class="w-full"></div>
 </section>
-`
-  await fs.outputFile(
-    targetSuccessFile,
-    successContent,
-    "utf8",
-  );
+`;
+  await fs.outputFile(targetSuccessFile, successContent, "utf8");
 
+  const loginContent = `
+<script type="module" crossorigin src="/${loginJSFile}"></script>
+<link rel="stylesheet" href="/${cssFile}">
+<section class="section pt-14">
+<div id="root" class="w-full"></div>
+</section>
+`;
+  await fs.outputFile(targetLoginFile, loginContent, "utf8");
 }
 
 // Run script
