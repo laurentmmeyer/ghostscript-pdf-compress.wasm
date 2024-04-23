@@ -11,6 +11,7 @@ export default defineConfig({
         index: "src/main.jsx",
         success: "src/main-success.jsx",
         login: "src/main-login.jsx",
+        pricing: "src/main-pricing.jsx",
       },
     },
   },

@@ -16,6 +16,8 @@ const targetSuccessFile =
   "/Users/laurentmeyer/Code/hugoplate/content/english/success/index.md";
 const targetLoginFile =
   "/Users/laurentmeyer/Code/hugoplate/content/english/login/index.md";
+const targetPricingFile =
+  "/Users/laurentmeyer/Code/hugoplate/content/english/pricing/index.md";
 
 // Clean directories
 async function cleanDirectories() {
@@ -78,12 +80,53 @@ async function updateAndMoveIndex() {
   await fs.outputFile(targetLoginFile, loginContent, "utf8");
 }
 
+const [pricingJSFile] = glob.sync("assets/pricing.*.js", { cwd: buildDir });
+const [cssFile] = glob.sync("assets/*.css", { cwd: buildDir });
+
+async function updatePricingContentWithPromo(existingFilePath, targetPricingFile, pricingJSFile, cssFile) {
+  try {
+    // Step 1: Read the existing file content
+    const fileContent = await fs.readFile(existingFilePath, 'utf8');
+
+    // Step 2: Extract promotional content
+    const promoContentRegex = /\[\/\/\]: # \(START TEXT\)([\s\S]*?)\[\/\/\]: # \(END TEXT\)/;
+    const match = fileContent.match(promoContentRegex);
+    const promoContent = match ? match[1].trim() : ''; // Default to empty string if not found
+
+    const pricingContent = `
+---
+title: Pricing
+---
+[//]: # (START TEXT)
+
+${promoContent} 
+
+[//]: # (END TEXT)
+
+<script type="module" crossorigin src="/${pricingJSFile}"></script>
+<link rel="stylesheet" href="/${cssFile}">
+<section class="section pt-14">
+<div id="root" class="w-full"></div>
+</section>
+`;
+
+    // Step 4: Write the updated content to the target file
+    await fs.writeFile(targetPricingFile, pricingContent, "utf8");
+    console.log('Pricing content updated successfully with promotional message.');
+
+  } catch (error) {
+    console.error('Error updating pricing content:', error);
+  }
+}
+
+
 // Run script
 (async () => {
   try {
     await cleanDirectories();
     await moveAssets();
     await updateAndMoveIndex();
+    await updatePricingContentWithPromo(targetPricingFile, targetPricingFile, pricingJSFile, cssFile)
     console.log("Build adjustment completed successfully.");
   } catch (error) {
     console.error("Error during build adjustment:", error);
