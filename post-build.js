@@ -58,6 +58,7 @@ async function updateAndMoveIndex() {
 
   const successContent = `
 ---
+title: Thank you!
 ---
 <script type="module" crossorigin src="/${successJSFile}"></script>
 
@@ -70,6 +71,7 @@ async function updateAndMoveIndex() {
 
   const loginContent = `
 ---
+title: Login
 ---
 <script type="module" crossorigin src="/${loginJSFile}"></script>
 <link rel="stylesheet" href="/${cssFile}">

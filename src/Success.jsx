@@ -17,13 +17,13 @@ const SuccessMessage = ({ purchaseType, product }) => {
       break;
     case "payment":
       message = (
-        <div className={"app-flex app-flex-col app-gap-3"}>
-          <p>
+        <div className={"app-flex app-flex-col app-gap-3 app-text-lg app-w-full"}>
+          <div>
             Awesome! You just bought the <b>{product}</b> lifetime license.
-          </p>
-          <p>
+          </div>
+          <div>
             You can now compress as many PDF as you like on this page. <br />
-          </p>
+          </div>
           <PurpleLink link="/" text="Compress PDFs" />
           <PurpleLink
             link="https://billing.stripe.com/p/login/test_3cs7tB4AS5VV86c4gg"
@@ -31,7 +31,7 @@ const SuccessMessage = ({ purchaseType, product }) => {
             newTab={true}
           />
           {product === "Entreprise" && (
-            <p>
+            <div>
               We'll be in touch soon to grant you access to an
               authentication-free version. <br />
               Should you require assistance with setting up your infrastructure,
@@ -43,7 +43,7 @@ const SuccessMessage = ({ purchaseType, product }) => {
                 contact@saferpdf.com
               </a>
               .
-            </p>
+            </div>
           )}
         </div>
       );
@@ -51,9 +51,9 @@ const SuccessMessage = ({ purchaseType, product }) => {
   }
 
   return (
-    <div className="app-flex app-flex-col app-items-center app-justify-center">
-      <div className="app-bg-white app-rounded-lg app-p-6 app-shadow-md">
-        <div className="app-flex app-flex-col app-items-center">
+    <div className="app-flex app-flex-col app-items-center app-justify-center app-w-full">
+      <div className="app-bg-white app-rounded-lg app-p-6 app-shadow-md app-w-full">
+        <div className="app-flex app-flex-col app-items-center app-w-full">
           {/* Green check icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ const SuccessMessage = ({ purchaseType, product }) => {
             />
           </svg>
           {/* Display the determined message */}
-          <div className="app-mt-4 app-text-center app-text-lg app-font-normal app-text-gray-700">
+          <div className="app-mt-4 app-text-center app-text-lg app-font-normal app-text-gray-700 app-w-full">
             {message}
           </div>
         </div>
@@ -90,13 +90,13 @@ const PleaseAuth = ({ user: firebaseUser }) => {
   };
 
   return (
-    <div className="app-bg-white app-rounded-lg app-p-6 app-shadow-md app-m-2 app-max-w-screen-md app-flex-col app-flex app-gap-3 justify-center">
-      <p className="app-text-lg">
+    <div className="app-bg-white app-rounded-lg app-p-6 app-shadow-md app-m-2 app-max-w-screen-md app-flex-col app-flex app-gap-3 justify-center app-w-full">
+      <div className="app-text-lg">
         Your subscription details have been stored locally on your computer.
         However, to ensure your subscription information remains accessible
         across different computers or browsers, please consider registering your
         Google account.
-      </p>
+      </div>
       <div className={"app-flex app-justify-center"}>
         <button
           onClick={handleLoginWithGoogle}
@@ -153,16 +153,16 @@ const PleaseAuth = ({ user: firebaseUser }) => {
               </g>
             </g>
           </svg>
-          <span>Continue with Google</span>
+          <span className={"app-text-black"}>Continue with Google</span>
           {/* Consider using a local or hosted image that represents "Sign in with Google" */}
         </button>
       </div>
-      <p className="app-text-lg">
+      <div className="app-text-lg">
         If you have any problem, please contact{" "}
         <a className={"app-underline"} href={"mailto:contact@saferpdf.com"}>
           contact@saferpdf.com
         </a>
-      </p>
+      </div>
     </div>
   );
 };
@@ -186,7 +186,7 @@ const Success = () => {
   if (loading) {
     return (
       <div className="app-flex app-justify-center app-items-center">
-        <p className="app-text-lg app-font-semibold">Loading...</p>
+        <div className="app-text-lg app-font-semibold">Loading...</div>
       </div>
     );
   }
@@ -199,9 +199,9 @@ const Success = () => {
   if (!user.firestoreUser?.mode) {
     return (
       <div className={"app-flex app-flex-col app-gap-3"}>
-        <p className="app-text-lg app-font-semibold app-max-w-screen-md">
+        <div className="app-text-lg app-font-semibold app-max-w-screen-md app-w-full">
           No subscription found
-        </p>
+        </div>
         <PurpleLink text="Go to pricing" link={"/pricing"} />
       </div>
     );
@@ -209,7 +209,7 @@ const Success = () => {
 
   return (
     <div className="app-flex app-flex-col app-items-center app-justify-center app-gap-4">
-      <div className="app-text-lg app-font-semibold app-max-w-screen-md	">
+      <div className="app-text-lg app-font-semibold app-max-w-screen-md app-w-full">
         <SuccessMessage
           purchaseType={user?.firestoreUser?.mode}
           product={user?.firestoreUser?.productDescription}

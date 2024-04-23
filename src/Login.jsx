@@ -19,7 +19,6 @@ const Login = () => {
   } else {
     return (
       <div className="app-w-full app-flex app-justify-center app-items-center app-flex-col app-gap-5">
-        <span className="app-text-4xl">Login</span>
         <button
           onClick={loginWithGoogle}
           className="hover:app-cursor-pointer	app-flex app-items-center app-bg-white dark:app-bg-gray-900 app-border app-border-gray-300 app-rounded-lg app-shadow-md app-px-6 app-py-2 app-text-sm app-font-medium app-text-gray-800 dark:app-text-white hover:app-bg-gray-200 focus:app-outline-none focus:app-ring-2 focus:app-ring-offset-2 focus:app-ring-gray-500"
@@ -75,7 +74,7 @@ const Login = () => {
               </g>
             </g>
           </svg>
-          <span>Continue with Google</span>
+          <span className={"app-text-black"}>Continue with Google</span>
           {/* Consider using a local or hosted image that represents "Sign in with Google" */}
         </button>
       </div>
