@@ -52,8 +52,8 @@ const ConfiguredStripePricing = () => {
 
   return (
     <StripePricingTable
-      pricingTableId="prctbl_1P31VHCxnjVEpDZGumK9rKs5"
-      publishableKey="pk_test_51OzCTZCxnjVEpDZG3BxYX3vubGYC45uiV57CJXFPiy8u40qUkieV3HqllUt3FooSYkjRW0GjRT2nggyf6DKWDVAg00U8TywKVs"
+      pricingTableId="prctbl_1PAA26CxnjVEpDZGlbPXFMpV"
+      publishableKey="pk_live_51OzCTZCxnjVEpDZGwQkgt12R1VAhVCAzA108Qi2CzSyK58ZGRtJKuU7VFmshqv5WDn3Md61nqASitEJO5dLmTNEu00m7ZkSGmT"
       clientReferenceId={user.firebaseUser.uid}
     />
   );

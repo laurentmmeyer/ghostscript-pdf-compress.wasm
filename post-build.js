@@ -97,7 +97,7 @@ async function updatePricingContentWithPromo(existingFilePath, targetPricingFile
 
     const pricingContent = `
 ---
-title: Pricing
+title: SaferPDF Compress - Pricing
 ---
 [//]: # (START TEXT)
 
