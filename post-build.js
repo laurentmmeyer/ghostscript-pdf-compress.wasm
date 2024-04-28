@@ -85,19 +85,27 @@ title: Login
 const [pricingJSFile] = glob.sync("assets/pricing.*.js", { cwd: buildDir });
 const [cssFile] = glob.sync("assets/*.css", { cwd: buildDir });
 
-async function updatePricingContentWithPromo(existingFilePath, targetPricingFile, pricingJSFile, cssFile) {
+async function updatePricingContentWithPromo(
+  existingFilePath,
+  targetPricingFile,
+  pricingJSFile,
+  cssFile,
+) {
   try {
     // Step 1: Read the existing file content
-    const fileContent = await fs.readFile(existingFilePath, 'utf8');
+    const fileContent = await fs.readFile(existingFilePath, "utf8");
 
     // Step 2: Extract promotional content
-    const promoContentRegex = /\[\/\/\]: # \(START TEXT\)([\s\S]*?)\[\/\/\]: # \(END TEXT\)/;
+    const promoContentRegex =
+      /\[\/\/\]: # \(START TEXT\)([\s\S]*?)\[\/\/\]: # \(END TEXT\)/;
     const match = fileContent.match(promoContentRegex);
-    const promoContent = match ? match[1].trim() : ''; // Default to empty string if not found
+    const promoContent = match ? match[1].trim() : ""; // Default to empty string if not found
 
     const pricingContent = `
 ---
-title: SaferPDF Compress - Pricing
+title: Pricing
+meta_title: SaferPDF Compress - Pricing
+image: "/images/saferpdf-thumbnail.png"
 ---
 [//]: # (START TEXT)
 
@@ -114,13 +122,13 @@ ${promoContent}
 
     // Step 4: Write the updated content to the target file
     await fs.writeFile(targetPricingFile, pricingContent, "utf8");
-    console.log('Pricing content updated successfully with promotional message.');
-
+    console.log(
+      "Pricing content updated successfully with promotional message.",
+    );
   } catch (error) {
-    console.error('Error updating pricing content:', error);
+    console.error("Error updating pricing content:", error);
   }
 }
-
 
 // Run script
 (async () => {
@@ -128,7 +136,12 @@ ${promoContent}
     await cleanDirectories();
     await moveAssets();
     await updateAndMoveIndex();
-    await updatePricingContentWithPromo(targetPricingFile, targetPricingFile, pricingJSFile, cssFile)
+    await updatePricingContentWithPromo(
+      targetPricingFile,
+      targetPricingFile,
+      pricingJSFile,
+      cssFile,
+    );
     console.log("Build adjustment completed successfully.");
   } catch (error) {
     console.error("Error during build adjustment:", error);

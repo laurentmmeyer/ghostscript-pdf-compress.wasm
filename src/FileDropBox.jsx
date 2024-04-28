@@ -183,7 +183,7 @@ function DropZone({ onLimitReached, user }) {
           disabled={state === "converting"}
           onClick={launchCompression}
         >
-          {state === "converting" ? <LoadingButton/> : "Compress 🚀"}
+          {state === "converting" ? <LoadingButton /> : "Compress 🚀"}
         </button>
       )}
       {converted.length > 0 && (

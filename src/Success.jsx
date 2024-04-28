@@ -1,7 +1,8 @@
 import useAuth from "./useAuth.jsx";
 import { useEffect } from "react";
-import { linkWithPopup, unlink, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, linkWithPopup, unlink } from "firebase/auth";
 import "./Commercial.css";
+import { PurpleLink } from "./PurpleLink.jsx";
 
 const SuccessMessage = ({ purchaseType, product }) => {
   // Determine the message based on the purchase type
@@ -17,7 +18,9 @@ const SuccessMessage = ({ purchaseType, product }) => {
       break;
     case "payment":
       message = (
-        <div className={"app-flex app-flex-col app-gap-3 app-text-lg app-w-full"}>
+        <div
+          className={"app-flex app-flex-col app-gap-3 app-text-lg app-w-full"}
+        >
           <div>
             Awesome! You just bought the <b>{product}</b> lifetime license.
           </div>
@@ -167,17 +170,6 @@ const PleaseAuth = ({ user: firebaseUser }) => {
   );
 };
 
-function PurpleLink({ text, link, newTab = false }) {
-  return (
-    <a
-      href={link}
-      className="hover:app-cursor-pointer hover:app-text-white app-px-4 app-py-2 app-bg-purple-900 app-text-white app-rounded hover:app-bg-purple-800 app-transition app-duration-150 app-ease-in-out"
-    >
-      {text}
-    </a>
-  );
-}
-
 const Success = () => {
   const { refreshAuth, loading, user } = useAuth();
 
@@ -218,7 +210,7 @@ const Success = () => {
       {!user.firebaseUser.providerData.length && (
         <PleaseAuth user={user.firebaseUser} />
       )}
-      <div onClick={unlinkDebug}>Unlink</div>
+      {/*<div onClick={unlinkDebug}>Unlink</div>*/}
     </div>
   );
 };

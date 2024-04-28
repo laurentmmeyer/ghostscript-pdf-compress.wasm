@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import DropZone from "./FileDropBox.jsx";
 import "./Commercial.css";
 import useAuth from "./useAuth.jsx";
+import USPS from "./USPS.jsx";
 
 function Commercial({ children }) {
   const [pricing, setPricing] = useState(false);
@@ -73,22 +74,27 @@ function Commercial({ children }) {
           {!hasChildren && !loading && (
             <>
               <h1 className="app-text-center text-blue app-font-bold app-text-4xl app-mb-4 font-raleway">
-                Your PDFs have never been safer.
+                Reduce your PDF file size without ever
+                <br />
+                compromising on quality or safety
               </h1>
-              <p className="app-max-w-xl app-text-center app-text-lg app-mb-6 app-font-sans ">
-                This PDF compressor works right in your browser using the latest
-                web technologies, meaning it does not rely on external servers.
+              <p className="app-max-w-2xl app-text-center app-text-lg app-mb-6 app-font-sans ">
+                Say "hi" to effortless PDF compression... and "bye" to bloated
+                files, long waiting times and online tools that might leak your
+                data without your knowledge.
                 <br />
-                <b>We do not send your files anywhere.</b>
                 <br />
-                <i>We cannot leak data we never had.</i>
-                <br />
-                <b>Safe, fast, and private</b> - all without leaving your
-                browser.
+                With our unique SaferPDF Compressor tool, your files never leave
+                your device. The power of the latest technologies will help you
+                compress all the PDFs you need in your day-to-day.
               </p>
+              <h2 className="app-text-center text-blue app-font-bold app-text-2xl app-mb-4 font-raleway">
+                It’s safe, it’s fast & most importantly, it’s private.
+              </h2>
               <div className="app-w-full app-max-w-md">
                 <DropZone onLimitReached={onLimitReached} user={user} />
               </div>
+              <USPS />
             </>
           )}
 
