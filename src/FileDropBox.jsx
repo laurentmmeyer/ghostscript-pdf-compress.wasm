@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { _GSPS2PDF } from "./lib/worker-init.js";
 import LoadingButton from "./LoadingButton.jsx";
+import initQPDF from "./lib/qpdf-init.js";
 
 const baseStyle = {
   flex: 1,
@@ -59,7 +60,8 @@ function DropZone({ onLimitReached, user }) {
     (acceptedFiles) => {
       const addedFiles = acceptedFiles.map((file) => {
         const url = window.URL.createObjectURL(file);
-        return { name: file.name, size: file.size, url };
+        const url2 = window.URL.createObjectURL(file);
+        return { name: file.name, size: file.size, url, url2 };
       });
       setFiles((files) => [...files, ...addedFiles]);
     },
@@ -68,18 +70,26 @@ function DropZone({ onLimitReached, user }) {
 
   async function compressPDFs(files) {
     if (files[0]) {
-      const { name, url, size } = files[0];
+      const { name, url, size, url2 } = files[0];
       const dataObject = { psDataURL: url };
       const { blob: element, cleanup } = await _GSPS2PDF(dataObject);
       const { pdfURL, size: newSize } = await loadPDFData(element, name);
+      let finalUrl = pdfURL;
+      let finalSize = newSize;
+      if (finalSize >= size) {
+        const qPDFURL = await initQPDF(url2);
+        const { pdfURL, size: newSize } = await loadPDFData(qPDFURL, name);
+        finalUrl = pdfURL;
+        finalSize = newSize;
+      }
       setConverted((converted) => [
         ...converted,
         {
           name,
-          pdfURL,
+          pdfURL: finalUrl,
           downloadName: minFilename(name),
-          newSize,
-          reduction: (size - newSize) / size,
+          newSize: finalSize,
+          reduction: (size - finalSize) / size,
         },
       ]);
       const newFiles = files.filter((e) => e.name !== name);
