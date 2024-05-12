@@ -6,7 +6,7 @@ export const ck = `
 <style>
 .ck-fade-in {
         opacity: 0; /* Start fully transparent */
-        animation: fadeInAnimation 5s ease-in-out 10s forwards; /* Animation details */
+        animation: fadeInAnimation 5s ease-in-out 3s forwards; /* Animation details */
     }
 
     @keyframes fadeInAnimation {
