@@ -3,6 +3,7 @@ import path from "path";
 import { glob } from "glob";
 
 import { fileURLToPath } from "url";
+import {ck} from "./convertkit.js";
 
 // Convert import.meta.url to __dirname equivalent
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -48,6 +49,7 @@ async function updateAndMoveIndex() {
 <link rel="stylesheet" href="/${cssFile}">
 <section class="section pt-14">
 <div id="root" class="w-full"></div>
+${ck}
 </section>
 
 {{ end }}
