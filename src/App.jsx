@@ -81,7 +81,7 @@ function App() {
         you want compress a PDF.
       </p>
       <p>
-        Be aware that the Webassembly binary is weighting <b>18MB</b>.
+        Be aware that the Webassembly binary is weighting <b>10MB</b>.
       </p>
       <p>
         <i>
