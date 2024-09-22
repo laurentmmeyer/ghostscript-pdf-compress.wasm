@@ -10,6 +10,10 @@ The applied command is:
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
 ```
 
+## WebWorker
+
+The compression is now processed in a webworker so that the main thread doesn't become unresponsive and now there is virtually no limit to the size of the PDF that you can compress :tada:  
+
 ## Run the project
 
 To run the project, simply do the following steps

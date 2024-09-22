@@ -1,17 +1,19 @@
-import { useState } from "react";
+import {useState} from "react";
 import "./App.css";
-import { _GSPS2PDF } from "./lib/background.js";
+import {_GSPS2PDF} from "./lib/worker-init.js";
+
 
 function loadPDFData(response, filename) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", response.pdfDataURL);
+    xhr.open("GET", response);
     xhr.responseType = "arraybuffer";
     xhr.onload = function () {
-      window.URL.revokeObjectURL(response.pdfDataURL);
-      const blob = new Blob([xhr.response], { type: "application/pdf" });
+      window.URL.revokeObjectURL(response);
+      const blob = new Blob([xhr.response], {type: "application/pdf"});
       const pdfURL = window.URL.createObjectURL(blob);
-      resolve({ pdfURL });
+      const size = xhr.response.byteLength;
+      resolve({pdfURL, size});
     };
     xhr.send();
   });
@@ -22,32 +24,24 @@ function App() {
   const [file, setFile] = useState(undefined);
   const [downloadLink, setDownloadLink] = useState(undefined);
 
-  function compressPDF(pdf, filename) {
-    const dataObject = { psDataURL: pdf };
-    _GSPS2PDF(
-      dataObject,
-      (element) => {
-        console.log(element);
-        setState("toBeDownloaded");
-        loadPDFData(element, filename).then(({ pdfURL }) => {
-          setDownloadLink(pdfURL);
-        });
-      },
-      (...args) => console.log("Progress:", JSON.stringify(args)),
-      (element) => console.log("Status Update:", JSON.stringify(element)),
-    );
+  async function compressPDF(pdf, filename) {
+    const dataObject = {psDataURL: pdf};
+    const element = await _GSPS2PDF(dataObject)
+    const {pdfURL, size: newSize} = await loadPDFData(element, filename)
+    setDownloadLink(pdfURL);
+    setState("toBeDownloaded");
   }
 
   const changeHandler = (event) => {
     const file = event.target.files[0];
     const url = window.URL.createObjectURL(file);
-    setFile({ filename: file.name, url });
+    setFile({filename: file.name, url});
     setState("selected");
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const { filename, url } = file;
+    const {filename, url} = file;
     compressPDF(url, filename);
     setState("loading");
     return false;
@@ -87,7 +81,7 @@ function App() {
         you want compress a PDF.
       </p>
       <p>
-        Be aware that the Webassembly binary is weighting <b>18MB</b>.
+        Be aware that the Webassembly binary is weighting <b>10MB</b>.
       </p>
       <p>
         <i>
@@ -146,7 +140,7 @@ function App() {
         </a>
         .
       </p>
-      <br />
+      <br/>
       <p>
         <i>This website uses no tracking, no cookies, no adtech.</i>
       </p>
