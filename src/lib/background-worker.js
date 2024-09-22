@@ -41,32 +41,8 @@ function _GSPS2PDF(
         "-sOutputFile=output.pdf",
         "input.pdf",
       ],
-      print: function (text) {
-        // statusUpdateCallback(text);
-      },
-      printErr: function (text) {
-        // statusUpdateCallback("Error: " + text);
-        // console.error(text);
-      },
-      // setStatus: function (text) {
-      //   if (!Module.setStatus.last)
-      //     Module.setStatus.last = { time: Date.now(), text: "" };
-      //   if (text === Module.setStatus.last.text) return;
-      //   var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-      //   var now = Date.now();
-      //   if (m && now - Module.setStatus.last.time < 30)
-      //     // if this is a progress update, skip it if too soon
-      //     return;
-      //   Module.setStatus.last.time = now;
-      //   Module.setStatus.last.text = text;
-      //   if (m) {
-      //     text = m[1];
-      //     progressCallback(false, parseInt(m[2]) * 100, parseInt(m[4]) * 100);
-      //   } else {
-      //     progressCallback(true, 0, 0);
-      //   }
-      //   statusUpdateCallback(text);
-      // },
+      print: function (text) {},
+      printErr: function (text) {},
       totalDependencies: 0,
       noExitRuntime: 1
     };
