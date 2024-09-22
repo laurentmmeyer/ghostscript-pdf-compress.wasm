@@ -1,2 +1,9 @@
 node_modules
 .idea
+dist
+functions
+.vercel
+*.log
+Users/
+.firebaserc
+firebase.json

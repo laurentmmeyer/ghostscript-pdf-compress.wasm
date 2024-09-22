@@ -6,4 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: { target: "esnext" },
   base: "/ghostscript-pdf-compress.wasm/",
+  worker: {format :'es'}
 });
