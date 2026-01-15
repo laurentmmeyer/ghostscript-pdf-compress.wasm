@@ -15,6 +15,9 @@ function loadPDFData(response, filename) {
       const size = xhr.response.byteLength;
       resolve({pdfURL, size});
     };
+    xhr.onerror = function () {
+      reject(new Error("Failed to load PDF data"));
+    };
     xhr.send();
   });
 }
@@ -26,10 +29,15 @@ function App() {
 
   async function compressPDF(pdf, filename) {
     const dataObject = {psDataURL: pdf};
-    const element = await _GSPS2PDF(dataObject)
-    const {pdfURL, size: newSize} = await loadPDFData(element, filename)
-    setDownloadLink(pdfURL);
-    setState("toBeDownloaded");
+    try {
+      const element = await _GSPS2PDF(dataObject);
+      const {pdfURL} = await loadPDFData(element, filename);
+      setDownloadLink(pdfURL);
+      setState("toBeDownloaded");
+    } catch (error) {
+      console.error("PDF compression failed:", error);
+      setState("init");
+    }
   }
 
   const changeHandler = (event) => {
@@ -81,7 +89,7 @@ function App() {
         you want compress a PDF.
       </p>
       <p>
-        Be aware that the Webassembly binary is weighting <b>10MB</b>.
+        Be aware that the Webassembly binary is weighting <b>20MB</b>.
       </p>
       <p>
         <i>
